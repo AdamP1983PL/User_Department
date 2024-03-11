@@ -1,6 +1,7 @@
 package com.user_department.service.user.dto;
 
 import com.user_department.model.authority.Authority;
+import com.user_department.model.enums.Role;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
@@ -22,6 +23,6 @@ public class UserDto {
     private String username;
     @NotEmpty(message = "Password should not be empty.")
     private String password;
-    private Set<Authority> authorities;
-
+//    private Set<Authority> authorities;
+    private Role role;
 }

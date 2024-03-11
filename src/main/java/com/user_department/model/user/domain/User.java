@@ -1,6 +1,7 @@
 package com.user_department.model.user.domain;
 
 import com.user_department.model.authority.Authority;
+import com.user_department.model.enums.Role;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,10 +29,11 @@ public class User {
     private String username;
     @Column(name = "PASSWORD", nullable = false)
     private String password;
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_roles",
-            joinColumns = {@JoinColumn(name = "USER_Id", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")})
-    private Set<Authority> authorities = new HashSet<>();
+//    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+//    @JoinTable(name = "user_roles",
+//            joinColumns = {@JoinColumn(name = "USER_Id", referencedColumnName = "ID")},
+//            inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")})
+//    private Set<Authority> authorities = new HashSet<>();
+    private Role role;
 
 }

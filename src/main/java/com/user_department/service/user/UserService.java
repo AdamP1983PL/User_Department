@@ -5,12 +5,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface UserService {
 
     List<UserDto> findAllUsers();
 
-    UserDto findUserByUserName(String username);
+    UserDto findUserByUsername(String username);
 
     UserDto createUser(UserDto userDto);
 
