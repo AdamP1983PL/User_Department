@@ -20,7 +20,8 @@
             <th>Last Name</th>
             <th>Username</th>
             <th>Password</th>
-            <th>Authorities</th>
+            <th>Role</th>
+            <th class="text-center">Details</th>
         </tr>
         </thead>
         <tbody>
@@ -32,28 +33,23 @@
             <td th:text="*{password}"></td>
             <td th:text="*{role}"></td>
             <td class="text-center">
-                <!--                <a th:href="@{/api/vehicle/frontend/details/registration/{registration}-->
-                <!--                  (registration=${vehicle.registrationNumber})}"-->
-                <!--                   class="btn btn-primary btn-sm">Details</a>-->
-            </td>
-            <td class="text-center">
-                <!--                <a th:href="@{/api/vehicle/frontend/edit/{registration}(registration=${vehicle.registrationNumber})}"-->
-                <!--                   class="btn btn-primary btn-sm">Edit</a>-->
-            </td>
-            <td class="text-center">
-                <!--                <a th:href="@{/api/vehicle/frontend/delete/{registration}(registration=${vehicle.registrationNumber})}"-->
-                <!--                   class="btn btn-danger btn-sm"-->
-                <!--                   onclick="if (!(confirm('Delete this Vehicle?'))) return false">Delete</a>-->
+                <a th:href="@{/admin/details/{userId}(userId=${user.id})}"
+                   class="btn btn-primary btn-sm">Details</a>
+                <a th:href="@{/admin/edit/{userId}(userId=${user.id})}"
+                   class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/admin/delete/{userId}(userId=${user.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Delete this Vehicle?'))) return false">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
     <p>
-        <div>
-            <h5>
-<!--                <a th:href="@{/api/vehicle/frontend/add-vehicle}">Add New User</a>-->
-            </h5>
-        </div>
+    <div>
+        <h5>
+            <a th:href="@{/admin/create-user}">Add New User</a>
+        </h5>
+    </div>
     </p>
     <p>
     <div>

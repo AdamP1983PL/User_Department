@@ -24,7 +24,7 @@ public class Authority {
     @Column(name = "ROLE", nullable = false)
     private Role role;
 
-    @ManyToMany(mappedBy = "authorities")
-    private Set<User> users;
+//    @ManyToMany(mappedBy = "authorities")
+//    private Set<User> users;
 
 }

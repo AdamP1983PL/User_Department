@@ -39,6 +39,14 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public UserDto findUserById(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id",  Long.toString(id)));
+        log.info("====>>>> findUserById(" + id + ") execution.");
+        return userMapper.mapToUserDto(user);
+    }
+
+    @Override
     public UserDto createUser(UserDto userDto) {
         Optional<User> user = userRepository.findByUsername(userDto.getUsername());
         if(user.isPresent()) {
@@ -57,7 +65,7 @@ public class UserServiceImpl implements UserService{
                     u.setFirstName(userDto.getFirstName());
                     u.setLastName(userDto.getLastName());
                     u.setPassword(userDto.getPassword());
-                    u.setAuthorities(userDto.getAuthorities());
+                    u.setRole(userDto.getRole());
                     return userRepository.save(u);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
@@ -67,10 +75,15 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void deleteUser(String username) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new ResourceNotFoundException("User", "username",  username));
-        log.info("====>>>> deleteUser(" + username + ") execution.");
+    public void mvcUpdateUser(UserDto userDto) {
+        userRepository.save(userMapper.mapToUser(userDto));
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "username",  Long.toString(id)));
+        log.info("====>>>> deleteUser(" + id + ") execution.");
         userRepository.delete(user);
     }
 }

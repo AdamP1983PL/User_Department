@@ -11,10 +11,14 @@ public interface UserService {
 
     UserDto findUserByUsername(String username);
 
+    UserDto findUserById(Long id);
+
     UserDto createUser(UserDto userDto);
 
     UserDto updateUser (UserDto userDto, String username);
 
-    void deleteUser (String username);
+    void mvcUpdateUser(UserDto userDto);
+
+    void deleteUser (Long id);
 
 }
