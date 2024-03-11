@@ -6,7 +6,6 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @PropertySource("classpath:database.properties")
-
 public class UserDepartmentApplication {
 
 	public static void main(String[] args) {
